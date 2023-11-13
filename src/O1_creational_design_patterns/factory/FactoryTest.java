@@ -1,11 +1,12 @@
 package O1_creational_design_patterns.factory;
 
-// Factory Interface (superclass)
+//***** Products *****
+// Abstract Product Interface
 interface Shape {
     void draw();
 }
 
-// Products (subclass Circle)
+// Concrete Product: Circle
 class Circle implements Shape {
     @Override
     public void draw() {
@@ -13,7 +14,7 @@ class Circle implements Shape {
     }
 }
 
-// Products (subclass Rectangle)
+// Concrete Product: Rectangle
 class Rectangle implements Shape {
     @Override
     public void draw() {
@@ -21,12 +22,16 @@ class Rectangle implements Shape {
     }
 }
 
-// Concrete Factories
-class ShapeFactory {
-    // Factory method to create object
-    // Shape <- most super type
-    public Shape createShape(String shapeType) {
+//***** Factory Interface *****
+interface ShapeFactory {
+    Shape createShape(String shapeType);
+}
 
+//***** Concrete Factory *****
+class ShapeFactoryImpl implements ShapeFactory {
+
+    @Override
+    public Shape createShape(String shapeType) {
         if (shapeType.equalsIgnoreCase("CIRCLE")) {
             return new Circle();
         } else if (shapeType.equalsIgnoreCase("RECTANGLE")) {
@@ -36,11 +41,10 @@ class ShapeFactory {
         return null;
     }
 }
-
 //////////////////////////////////////////////////
 class FactoryTest {
     public static void main(String[] args) {
-        ShapeFactory shapeFactory = new ShapeFactory();
+        ShapeFactoryImpl shapeFactory = new ShapeFactoryImpl();
 
         // create Circle
         Shape circle = shapeFactory.createShape("Circle");
