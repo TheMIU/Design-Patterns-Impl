@@ -30,6 +30,7 @@ interface ShapeFactory {
 //***** Concrete Factory *****
 class ShapeFactoryImpl implements ShapeFactory {
 
+    // Shape <- most super type
     @Override
     public Shape createShape(String shapeType) {
         if (shapeType.equalsIgnoreCase("CIRCLE")) {
