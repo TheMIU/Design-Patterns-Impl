@@ -1,11 +1,12 @@
 package O2_structural_design_patterns.decorator;
 
-// Key Component 1: Shape Interface represents the component interface
+// ***** Component Interface *****
 interface Shape {
     void draw();
 }
 
-// Key Component 2: Concrete Component (Circle)
+// ***** Concrete Components *****
+// Concrete Component (Circle)
 class Circle implements Shape {
     @Override
     public void draw() {
@@ -13,7 +14,7 @@ class Circle implements Shape {
     }
 }
 
-// Key Component 2: Concrete Component (Rectangle)
+// Concrete Component (Rectangle)
 class Rectangle implements Shape {
     @Override
     public void draw() {
@@ -21,22 +22,23 @@ class Rectangle implements Shape {
     }
 }
 
-// Key Component 3: Decorator (abstract class) - ShapeDecorator
+// ***** Decorator *****
 abstract class ShapeDecorator implements Shape {
     protected Shape decoratorShape;
 
-    // Constructor to set the component to be decorated
+    // set the component to be decorated
     public ShapeDecorator(Shape decoratorShape) {
         this.decoratorShape = decoratorShape;
     }
 
-    // Delegating the draw operation to the component
+    // Delegating(පැවරීම) the draw operation to the component
     public void draw() {
         decoratorShape.draw();
     }
 }
 
-// Key Component 4: Concrete Decorator (RedShapeDecorator)
+// ***** Concrete Decorator *****
+// Concrete Decorator (RedShapeDecorator)
 class RedShapeDecorator extends ShapeDecorator {
     // Constructor to set the component to be decorated
     public RedShapeDecorator(Shape decoratorShape) {
@@ -56,7 +58,7 @@ class RedShapeDecorator extends ShapeDecorator {
     }
 }
 
-// Test class
+//////////////////////////////////////////////////
 class DecoratorTest {
     public static void main(String[] args) {
         // Creating instances of Concrete Components
