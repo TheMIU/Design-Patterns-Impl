@@ -1,11 +1,11 @@
 package O3_behavioral_design_patterns.strategy;
 
-// Strategy interface
+// ***** Strategy interface *****
 interface MovementStrategy {
     void move();
 }
 
-// Concrete Strategies
+// ***** Concrete Strategies *****
 class WalkStrategy implements MovementStrategy {
     @Override
     public void move() {
@@ -27,7 +27,7 @@ class SprintStrategy implements MovementStrategy {
     }
 }
 
-// Context
+// ***** Context *****
 class Player {
     private MovementStrategy movementStrategy;
 
@@ -40,7 +40,6 @@ class Player {
     }
 }
 
-
 //////////////////////////////////////////////////
 class StrategyTest {
      public static void main(String[] args) {
@@ -48,14 +47,14 @@ class StrategyTest {
 
         // Initial movement strategy: walking
         player.setMovementStrategy(new WalkStrategy());
-        player.moveCharacter(); // Output: Walking...
+        player.moveCharacter();
 
         // Change movement strategy: running
         player.setMovementStrategy(new RunStrategy());
-        player.moveCharacter(); // Output: Running...
+        player.moveCharacter();
 
         // Change movement strategy: sprinting
         player.setMovementStrategy(new SprintStrategy());
-        player.moveCharacter(); // Output: Sprinting!!
+        player.moveCharacter();
     }
 }

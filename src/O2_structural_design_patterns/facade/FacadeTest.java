@@ -57,7 +57,7 @@ public class FacadeTest {
         // Create a HomeAutomation instance
         HomeAutomation homeAutomation = new HomeAutomationFacade();
 
-        // Use the HomeAutomation to interact with the smart home subsystems
+        // Use the HomeAutomation to interact with the home subsystems
         homeAutomation.turnOnLights();
         homeAutomation.turnOffLights();
     }

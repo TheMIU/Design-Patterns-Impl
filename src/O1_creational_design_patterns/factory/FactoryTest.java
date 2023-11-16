@@ -14,7 +14,6 @@ class Car implements Vehicle {
     }
 }
 
-
 // Concrete Product: Motorcycle
 class Motorcycle implements Vehicle {
     @Override
@@ -42,6 +41,7 @@ class VehicleFactoryImpl implements VehicleFactory {
 }
 
 //////////////////////////////////////////////////
+// usage
 class FactoryTest {
     public static void main(String[] args) {
         VehicleFactoryImpl vehicleFactory = new VehicleFactoryImpl();
