@@ -2,57 +2,56 @@ package O1_creational_design_patterns.factory;
 
 //***** Products *****
 // Abstract Product Interface
-interface Shape {
-    void draw();
+interface Vehicle {
+    void drive();
 }
 
-// Concrete Product: Circle
-class Circle implements Shape {
+// Concrete Product: Car
+class Car implements Vehicle {
     @Override
-    public void draw() {
-        System.out.println("Drawing a Circle");
+    public void drive() {
+        System.out.println("Driving a Car");
     }
 }
 
-// Concrete Product: Rectangle
-class Rectangle implements Shape {
+
+// Concrete Product: Motorcycle
+class Motorcycle implements Vehicle {
     @Override
-    public void draw() {
-        System.out.println("Drawing a Rectangle");
+    public void drive() {
+        System.out.println("Riding a Motorcycle");
     }
 }
 
 //***** Factory Interface *****
-interface ShapeFactory {
-    Shape createShape(String shapeType);
+interface VehicleFactory {
+    Vehicle createVehicle(String vehicleType);
 }
 
 //***** Concrete Factory *****
-class ShapeFactoryImpl implements ShapeFactory {
-
-    // Shape <- most super type
+class VehicleFactoryImpl implements VehicleFactory {
     @Override
-    public Shape createShape(String shapeType) {
-        if (shapeType.equalsIgnoreCase("CIRCLE")) {
-            return new Circle();
-        } else if (shapeType.equalsIgnoreCase("RECTANGLE")) {
-            return new Rectangle();
+    public Vehicle createVehicle(String vehicleType) {
+        if (vehicleType.equalsIgnoreCase("CAR")) {
+            return new Car();
+        } else if (vehicleType.equalsIgnoreCase("MOTORCYCLE")) {
+            return new Motorcycle();
         }
-
         return null;
     }
 }
+
 //////////////////////////////////////////////////
 class FactoryTest {
     public static void main(String[] args) {
-        ShapeFactoryImpl shapeFactory = new ShapeFactoryImpl();
+        VehicleFactoryImpl vehicleFactory = new VehicleFactoryImpl();
 
-        // create Circle
-        Shape circle = shapeFactory.createShape("Circle");
-        circle.draw();
+        // create Car
+        Vehicle car = vehicleFactory.createVehicle("Car");
+        car.drive();
 
-        // create Rectangle
-        Shape rectangle = shapeFactory.createShape("Rectangle");
-        rectangle.draw();
+        // create Motorcycle
+        Vehicle motorcycle = vehicleFactory.createVehicle("Motorcycle");
+        motorcycle.drive();
     }
 }

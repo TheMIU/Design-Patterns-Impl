@@ -2,66 +2,63 @@ package O2_structural_design_patterns.facade;
 
 //***** Subsystems *****
 // Subsystem interface
-interface Shape {
-    void draw();
+interface Lights {
+    void turnOn();
+    void turnOff();
 }
 
 // Subsystem classes
-class Circle implements Shape {
+class LivingRoomLights implements Lights {
     @Override
-    public void draw() {
-        System.out.println("Drawing a Circle");
+    public void turnOn() {
+        System.out.println("Living room lights turned on");
     }
-}
 
-class Rectangle implements Shape {
     @Override
-    public void draw() {
-        System.out.println("Drawing a Rectangle");
+    public void turnOff() {
+        System.out.println("Living room lights turned off");
     }
 }
 
 // ***** Facade *****
 // Facade interface
-interface ShapeMaker {
-    void drawCircle();
-    void drawRectangle();
+interface HomeAutomation {
+    void turnOnLights();
+    void turnOffLights();
 }
 
+
 // Facade class
-class ShapeMakerImpl implements ShapeMaker {
-    private Shape circle;
-    private Shape rectangle;
+class HomeAutomationFacade implements HomeAutomation {
+    private Lights livingRoomLights;
 
     // Initialize subsystems in the constructor
-    public ShapeMakerImpl() {
-        circle = new Circle();
-        rectangle = new Rectangle();
+    public HomeAutomationFacade() {
+        livingRoomLights = new LivingRoomLights();
     }
 
-    // Facade method to draw a circle
+    // Facade method to turn on lights
     @Override
-    public void drawCircle() {
-        circle.draw();
+    public void turnOnLights() {
+        livingRoomLights.turnOn();
     }
 
-    // Facade method to draw a rectangle
+    // Facade method to turn off lights
     @Override
-    public void drawRectangle() {
-        rectangle.draw();
+    public void turnOffLights() {
+        livingRoomLights.turnOff();
     }
-
 }
 
 //////////////////////////////////////////////////
 // ***** Client *****
 public class FacadeTest {
     public static void main(String[] args) {
-        // Create a Facade instance
-        ShapeMaker shapeMaker = new ShapeMakerImpl();
+        // Create a HomeAutomation instance
+        HomeAutomation homeAutomation = new HomeAutomationFacade();
 
-        // Use the Facade to interact with the subsystems
-        shapeMaker.drawCircle();
-        shapeMaker.drawRectangle();
+        // Use the HomeAutomation to interact with the smart home subsystems
+        homeAutomation.turnOnLights();
+        homeAutomation.turnOffLights();
     }
 }
