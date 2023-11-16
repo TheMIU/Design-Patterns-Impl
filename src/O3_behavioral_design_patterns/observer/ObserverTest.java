@@ -31,7 +31,7 @@ class WeatherStation {
     }
 }
 
-// ConcreteObserver PhoneApp
+// Concrete Observer PhoneApp
 class PhoneApp implements WeatherObserver {
     @Override
     public void update(int temperature, int windSpeed) {
@@ -39,7 +39,7 @@ class PhoneApp implements WeatherObserver {
     }
 }
 
-// ConcreteObserver DisplayBoard
+// Concrete Observer DisplayBoard
 class DisplayBoard implements WeatherObserver {
     @Override
     public void update(int temperature, int windSpeed) {
