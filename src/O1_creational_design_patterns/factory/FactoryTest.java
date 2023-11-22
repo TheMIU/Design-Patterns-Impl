@@ -15,28 +15,30 @@ class Car implements Vehicle {
 }
 
 // Concrete Product: Motorcycle
-class Motorcycle implements Vehicle {
+class Bike implements Vehicle {
     @Override
     public void drive() {
-        System.out.println("Riding a Motorcycle");
+        System.out.println("Riding a Bike");
     }
 }
 
 //***** Factory Interface *****
 interface VehicleFactory {
-    Vehicle createVehicle(String vehicleType);
+    Vehicle createVehicle(String type);
 }
 
 //***** Concrete Factory *****
 class VehicleFactoryImpl implements VehicleFactory {
     @Override
-    public Vehicle createVehicle(String vehicleType) {
-        if (vehicleType.equalsIgnoreCase("CAR")) {
-            return new Car();
-        } else if (vehicleType.equalsIgnoreCase("MOTORCYCLE")) {
-            return new Motorcycle();
+    public Vehicle createVehicle(String type) {
+        switch (type) {
+            case "Car":
+                return new Car();
+            case "Bike":
+                return new Bike();
+            default:
+                return null;
         }
-        return null;
     }
 }
 
@@ -51,7 +53,7 @@ class FactoryTest {
         car.drive();
 
         // create Motorcycle
-        Vehicle motorcycle = vehicleFactory.createVehicle("Motorcycle");
-        motorcycle.drive();
+        Vehicle bike = vehicleFactory.createVehicle("Bike");
+        bike.drive();
     }
 }
