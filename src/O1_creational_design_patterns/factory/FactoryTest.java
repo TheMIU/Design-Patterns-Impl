@@ -1,5 +1,31 @@
 package O1_creational_design_patterns.factory;
 
+// usage
+class FactoryTest {
+    public static void main(String[] args) {
+        VehicleFactoryImpl vehicleFactory = new VehicleFactoryImpl();
+
+        // create Car
+        Vehicle car = vehicleFactory.createVehicle("Car");
+        car.drive();
+
+        // create Motorcycle
+        Vehicle bike = vehicleFactory.createVehicle("Bike");
+        bike.drive();
+    }
+}
+//////////////////////////////////////////////////
+/*
+    Creational Design Patterns
+    >> Factory
+    * Object creation logic එක hide කරයි.
+
+    Key Components
+    ==============
+    1. Products (Product interface & Concrete products)
+    2. Factory (Factory interface & Concrete factory)
+*/
+
 //***** Products *****
 // Abstract Product Interface
 interface Vehicle {
@@ -39,21 +65,5 @@ class VehicleFactoryImpl implements VehicleFactory {
             default:
                 return null;
         }
-    }
-}
-
-//////////////////////////////////////////////////
-// usage
-class FactoryTest {
-    public static void main(String[] args) {
-        VehicleFactoryImpl vehicleFactory = new VehicleFactoryImpl();
-
-        // create Car
-        Vehicle car = vehicleFactory.createVehicle("Car");
-        car.drive();
-
-        // create Motorcycle
-        Vehicle bike = vehicleFactory.createVehicle("Bike");
-        bike.drive();
     }
 }
